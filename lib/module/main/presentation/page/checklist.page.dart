@@ -114,6 +114,7 @@ class ChecklistPage extends StatelessWidget {
                 );
               },
               label: 'Add New Task',
+              icon: Icons.add_rounded,
             ),
           ),
         ],

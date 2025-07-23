@@ -3,27 +3,56 @@ import 'package:flutter/material.dart';
 class AddTaskButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
+  final IconData icon;
 
-  const AddTaskButton({super.key, required this.onPressed, required this.label});
+  const AddTaskButton({super.key, required this.onPressed, required this.label, required this.icon});
 
   @override
   Widget build(BuildContext context) {
+    const buttonColor = Color(0xFF4A3780);
     return SizedBox(
       width: double.infinity,
-      child: ElevatedButton(
+      child: OutlinedButton.icon(
         onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF4A3780),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 20),
-        ),
-        child: Text(
+        icon: Icon(icon),
+        label: Text(
           label,
           style: const TextStyle(
-            color: Colors.white,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
+          ),          
+        ),
+        style: ButtonStyle(
+          side: WidgetStateProperty.all(
+            const BorderSide(color: buttonColor, width: 2),
+          ),
+          padding: WidgetStateProperty.all(
+            const EdgeInsets.symmetric(vertical: 16),
+          ),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+          ),
+
+          backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+            (states) {
+              if (states.contains(WidgetState.hovered) ||
+                  states.contains(WidgetState.pressed)) {
+                return buttonColor; 
+              }
+              return Colors.transparent; 
+            },
+          ),
+
+          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+            (states) {
+              if (states.contains(WidgetState.hovered) ||
+                  states.contains(WidgetState.pressed)) {
+                return Colors.white; 
+              }
+              return buttonColor;
+            },
           ),
         ),
       ),

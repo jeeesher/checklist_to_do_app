@@ -121,6 +121,7 @@ class AddTaskPage extends StatelessWidget {
             AddTaskButton(
               onPressed: saveTask,
               label: 'Save Task',
+              icon: Icons.download_rounded,
             ),
           ],
         ),

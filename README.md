@@ -63,6 +63,6 @@ This app uses the following main packages:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.3
-  shared_preferences: ^2.2.2
+  flutter_bloc: ^9.1.1
+  shared_preferences: ^2.5.3
 ```

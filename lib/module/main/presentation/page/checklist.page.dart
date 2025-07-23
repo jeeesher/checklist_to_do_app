@@ -1,5 +1,11 @@
+import 'package:checklist_to_do_app/module/main/presentation/page/widgets/clear_all_dialog.dart';
+import 'package:checklist_to_do_app/module/main/presentation/page/widgets/empty_task.dart';
+import 'package:checklist_to_do_app/module/main/presentation/page/widgets/task_item.dart';
+import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
+import 'package:checklist_to_do_app/module/task/domain/cubit/task_state.dart';
 import 'package:checklist_to_do_app/module/widgets/add_task_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChecklistPage extends StatelessWidget {
   ChecklistPage({super.key});
@@ -32,11 +38,7 @@ class ChecklistPage extends StatelessWidget {
             ),
             child: IconButton(
               icon: const Icon(Icons.delete_outline_rounded, color: Color(0xFF4A3780), size: 20),
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('All tasks cleared!')),
-                );
-              },
+              onPressed: () => ClearAllDialog.show(context),
               tooltip: 'Clear All Tasks',
             ),
           ),
@@ -45,60 +47,54 @@ class ChecklistPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: dummyTasks.isEmpty
-                ? _buildEmptyState()
-                : ListView.builder(
-                    padding: const EdgeInsets.all(20),
-                    itemCount: dummyTasks.length,
+            child: BlocBuilder<TaskCubit, TaskState>(
+              builder: (context, state) {
+                if (state is TaskLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                } 
+
+                if (state is TaskLoaded) {
+                  if (state.tasks.isEmpty) {
+                    return const EmptyTaskState();
+                  }
+
+                  return ListView.builder(
+                    padding: EdgeInsets.all(16),
+                    itemCount: state.tasks.length,
                     itemBuilder: (context, index) {
-                      final task = dummyTasks[index];
-                      return Card(
-                        color: Colors.white,
-                        elevation: 0.5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        margin: const EdgeInsets.only(bottom: 8),
-                        child: ListTile(
-                          leading: Checkbox(
-                            value: task['isCompleted'],
-                            onChanged: (value) {
-                              // No functionality yet
-                            },
-                            activeColor: Color(0xFF4A3780),
-                            checkColor: Colors.white,
-                          ),
-                          title: Text(
-                            task['title'],
-                            style: TextStyle(
-                              decoration: task['isCompleted']
-                                  ? TextDecoration.lineThrough
-                                  : null,
-                              color: task['isCompleted']
-                                  ? Colors.grey
-                                  : Colors.black,
-                            ),
-                          ),
-                        ),
-                      );
+                      final task = state.tasks[index];
+                      return TaskItem(task: task);
                     },
-                  ),
+                  );
+                }
+
+                if (state is TaskError) {
+                  return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.error, size: 64, color: Colors.red),
+                          SizedBox(height: 16),
+                          Text(state.message),
+                          SizedBox(height: 16),
+                          ElevatedButton(
+                            onPressed: () => context.read<TaskCubit>().loadTasks(),
+                            child: Text('Retry'),
+                          ),
+                        ],
+                      ),
+                    );
+                }
+
+                return Center(child: Text('Something went wrong'));
+              },
+            ), 
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: AddTaskButton(onPressed: () {}, label: 'Add New Task'),
+            child: AddTaskButton(() {}, label: 'Add New Task'),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildEmptyState() {
-    return Center(
-      child: Text(
-        'No tasks available. Tap the "+" button to add a new task.',
-        style: TextStyle(fontSize: 18, color: Colors.grey[600]),
-        textAlign: TextAlign.center,
       ),
     );
   }

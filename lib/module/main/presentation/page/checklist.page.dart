@@ -9,13 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChecklistPage extends StatelessWidget {
-  ChecklistPage({super.key});
-
-  final List<Map<String, dynamic>> dummyTasks = [
-    {'title': 'Buy groceries', 'isCompleted': false},
-    {'title': 'Walk the dog', 'isCompleted': true},
-    {'title': 'Finish Flutter exam', 'isCompleted': false},
-  ];
+  const ChecklistPage({super.key});
 
   @override
   Widget build(BuildContext context) {

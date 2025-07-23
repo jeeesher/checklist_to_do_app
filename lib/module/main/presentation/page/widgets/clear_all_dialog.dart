@@ -20,19 +20,27 @@ class ClearAllDialog extends StatelessWidget {
         'Are you sure you want to delete all tasks? This action cannot be undone.',
       ),
       actions: [
-        TextButton(
+        ElevatedButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('Cancel'),
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          child: Text('Cancel', style: TextStyle(color: Color(0xFF4A3780))),
         ),
-        TextButton(
+        ElevatedButton(
           onPressed: () {
             context.read<TaskCubit>().clearAllTasks();
             Navigator.pop(context);
           },
-          child: Text(
-            'Clear All',
-            style: TextStyle(color: Colors.red),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF4A3780),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
           ),
+          child: Text('Clear All', style: TextStyle(color: Colors.white)),
         ),
       ],
     );

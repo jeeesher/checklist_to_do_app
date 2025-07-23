@@ -7,6 +7,7 @@ It uses **Bloc (Cubit) state management** for reactive UI updates and stores tas
 - ✅ View a list of tasks
 - ✅ Add a new task
 - ✅ Mark tasks as completed/uncompleted
+- ✅ Delete a single task
 - ✅ Clear all tasks
 - ✅ Persistent local storage
 
@@ -42,7 +43,9 @@ This project follows a **modular folder structure** for scalability and maintain
 
 **Add Task:** Tap the "Add New Task" button to add a new task
 
-**Complete Tasks:** Tap the checkbox next to any task to mark it complete
+**Complete Tasks:** Tap the check icon next to any task to mark it complete
+
+**Delete Tasks:** Tap the trash icon next to any task to delete it
 
 **Clear All:** Use the clear all button in the app bar to remove all tasks
 
@@ -57,6 +60,7 @@ This app uses the following main packages:
 | **flutter_bloc** | State management (Cubit) for reactive UI updates |
 | **shared_preferences** | Local storage for saving tasks |
 | **flutter/material.dart** | Core Flutter UI widgets |
+| **google_fonts** | Apply a global Google Font to the entire app |
 
 **pubspec.yaml extract:**
 ```yaml
@@ -65,4 +69,5 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.1
   shared_preferences: ^2.5.3
+  google_fonts: ^6.2.1
 ```

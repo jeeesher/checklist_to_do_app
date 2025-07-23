@@ -43,7 +43,7 @@ This project follows a **modular folder structure** for scalability and maintain
 
 **Add Task:** Tap the "Add New Task" button to add a new task
 
-**Complete Tasks:** Tap the check icon next to any task to mark it complete
+**Complete Tasks:** Tap the checkbox next to any task to mark it complete
 
 **Delete Tasks:** Tap the trash icon next to any task to delete it
 

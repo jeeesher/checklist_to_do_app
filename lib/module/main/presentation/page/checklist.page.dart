@@ -24,7 +24,7 @@ class ChecklistPage extends StatelessWidget {
             )),
         actions: [
           Container(
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(5),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.white,

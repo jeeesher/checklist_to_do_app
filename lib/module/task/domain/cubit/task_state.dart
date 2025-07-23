@@ -1,4 +1,4 @@
-import 'package:checklist_to_do_app/module/task/data/model/task.model.dart';
+import 'package:checklist_to_do_app/module/task/domain/entity/task.entity.dart';
 
 
 abstract class TaskState {}
@@ -8,7 +8,7 @@ class TaskInitial extends TaskState {}
 class TaskLoading extends TaskState {}
 
 class TaskLoaded extends TaskState {
-  final List<TaskModel> tasks;
+  final List<TaskEntity> tasks;
 
   TaskLoaded(this.tasks);
 }

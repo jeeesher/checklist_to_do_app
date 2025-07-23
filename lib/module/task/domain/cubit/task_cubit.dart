@@ -1,11 +1,11 @@
-import 'package:checklist_to_do_app/module/task/data/model/task.model.dart';
 import 'package:checklist_to_do_app/module/task/data/repositories/task.repository.dart';
+import 'package:checklist_to_do_app/module/task/domain/entity/task.entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'task_state.dart';
 
 class TaskCubit extends Cubit<TaskState> {
   final TaskRepository repository;
-  List<TaskModel> _tasks = [];
+  List<TaskEntity> _tasks = [];
 
   TaskCubit(this.repository) : super(TaskInitial());
 
@@ -24,7 +24,7 @@ class TaskCubit extends Cubit<TaskState> {
   Future<void> addTask(String title) async {
     if (title.trim().isEmpty) return;
 
-    final newTask = TaskModel(
+    final newTask = TaskEntity(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       title: title.trim(),
       isCompleted: false,

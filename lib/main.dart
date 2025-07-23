@@ -1,4 +1,4 @@
-import 'package:checklist_to_do_app/module/main/presentation/checklist.page.dart';
+import 'package:checklist_to_do_app/module/main/presentation/page/checklist.page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -21,6 +21,8 @@ class TaskItem extends StatelessWidget {
       ),
       margin: EdgeInsets.only(bottom: 8),
       child: ListTile(
+        horizontalTitleGap: 0,
+        contentPadding:  EdgeInsets.all(5),
         leading: Checkbox(
           value: task.isCompleted,
           onChanged: (_) => context.read<TaskCubit>().toggleTask(task.id),

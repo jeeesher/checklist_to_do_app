@@ -10,21 +10,22 @@ class ErrorHandler {
       return;
     }
 
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text("OK"),
-          ),
+    ScaffoldMessenger.of(context).clearSnackBars(); // remove previous
+
+    final snackBar = SnackBar(
+      content: Row(
+        children: [
+          const Icon(Icons.error_outline, color: Colors.white),
+          const SizedBox(width: 8),
+          Expanded(child: Text(message, maxLines: 2, overflow: TextOverflow.ellipsis)),
         ],
       ),
+      backgroundColor: Colors.redAccent,
+      behavior: SnackBarBehavior.floating, // ✅ floating over content
+      margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+      duration: const Duration(seconds: 3),
     );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

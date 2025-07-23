@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
 import 'package:checklist_to_do_app/module/task/presentation/page/wigdets/task_text_field.dart';
 import 'package:checklist_to_do_app/module/widgets/custom_app_bar.dart';
@@ -27,7 +28,7 @@ class AddTaskPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFFEFF2F5),
+      backgroundColor: backgroundLight,
       appBar: CustomAppBar(
         title: 'Add New Task',
         actionIcon: Icons.close_rounded,

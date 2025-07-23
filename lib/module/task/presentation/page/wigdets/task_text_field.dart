@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:flutter/material.dart';
 
 class TaskTextField extends StatelessWidget {
@@ -14,18 +15,18 @@ class TaskTextField extends StatelessWidget {
         hintText: 'Enter your task here...',
         hintStyle: const TextStyle(
           fontSize: 16,
-          color: Colors.grey,
+          color: textGrey,
         ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: backgroundWhite,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: backgroundGrey),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
-            color: Color(0xFF4A3780),
+            color: primaryColor,
             width: 2,
           ),
         ),

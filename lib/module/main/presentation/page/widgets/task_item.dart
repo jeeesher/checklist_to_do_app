@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/confirm_dialog.dart';
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
 import 'package:checklist_to_do_app/module/task/presentation/view_model/task.view_model.dart';
@@ -17,11 +18,11 @@ class TaskItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
       decoration: BoxDecoration(
-        color: isCompleted ? Colors.grey.shade300 : Colors.white,
+        color: isCompleted ? backgroundGrey : backgroundWhite,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: backgroundDark.withValues(alpha: 0.05),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -45,9 +46,9 @@ class TaskItem extends StatelessWidget {
               task.title,
               style: TextStyle(
                 fontSize: 16,
-                color: isCompleted ? const Color(0xFF8E8E8E) : Colors.black,
+                color: isCompleted ? textGrey : textDark,
                 decoration: isCompleted ? TextDecoration.lineThrough : null,
-                decorationColor: const Color(0xFF4A3780),
+                decorationColor: primaryColor,
                 decorationThickness: 1,
               ),
             ),
@@ -70,7 +71,7 @@ class TaskItem extends StatelessWidget {
               },
               child: const Icon(
                 Icons.delete_outline_rounded,
-                color: Color(0xFF4A3780),
+                color: primaryColor,
                 size: 24,
               ),
             ),

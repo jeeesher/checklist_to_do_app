@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -14,7 +15,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const buttonColor = Color(0xFF4A3780);
+    const buttonColor = primaryColor;
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton.icon(
@@ -46,7 +47,7 @@ class CustomButton extends StatelessWidget {
           foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
             if (states.contains(WidgetState.hovered) ||
                 states.contains(WidgetState.pressed)) {
-              return Colors.white;
+              return backgroundWhite;
             }
             return buttonColor;
           }),

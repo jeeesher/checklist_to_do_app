@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:flutter/material.dart';
 
 class ErrorHandler {
@@ -10,18 +11,18 @@ class ErrorHandler {
       return;
     }
 
-    ScaffoldMessenger.of(context).clearSnackBars(); // remove previous
+    ScaffoldMessenger.of(context).clearSnackBars();
 
     final snackBar = SnackBar(
       content: Row(
         children: [
-          const Icon(Icons.error_outline, color: Colors.white),
+          const Icon(Icons.error_outline, color: backgroundWhite),
           const SizedBox(width: 8),
           Expanded(child: Text(message, maxLines: 2, overflow: TextOverflow.ellipsis)),
         ],
       ),
-      backgroundColor: Colors.redAccent,
-      behavior: SnackBarBehavior.floating, // ✅ floating over content
+      backgroundColor: errorRed,
+      behavior: SnackBarBehavior.floating,
       margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
       duration: const Duration(seconds: 3),
     );

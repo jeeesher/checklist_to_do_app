@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -18,13 +19,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: const Color(0xFF4A3780),
+      backgroundColor: primaryColor,
       title: Text(
         title,
         style: const TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: textWhite,
         ),
       ),
       actions: [
@@ -32,12 +33,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           margin: const EdgeInsets.all(10),
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white,
+            color: backgroundWhite,
           ),
           child: IconButton(
             icon: Icon(
               actionIcon,
-              color: const Color(0xFF4A3780),
+              color: primaryColor,
               size: 22,
             ),
             onPressed: onActionPressed,

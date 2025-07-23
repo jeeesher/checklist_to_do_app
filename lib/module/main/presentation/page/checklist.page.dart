@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/confirm_dialog.dart';
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/empty_task.dart';
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/task_item.dart';
@@ -15,7 +16,7 @@ class ChecklistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEFF2F5),
+      backgroundColor: backgroundLight,
       appBar: CustomAppBar(
         title: 'My To-Do List',
         actionIcon: Icons.delete_outline_rounded,
@@ -58,13 +59,13 @@ class ChecklistPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.error, size: 64, color: Colors.red),
+                        Icon(Icons.error, size: 64, color: errorRed),
                         SizedBox(height: 16),
                         Text(state.message),
                         SizedBox(height: 16),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, backgroundColor: Color(0xFF4A3780),
+                            foregroundColor: textWhite, backgroundColor: primaryColor,
                           ),
                           onPressed: () =>
                               context.read<TaskCubit>().loadTasks(),

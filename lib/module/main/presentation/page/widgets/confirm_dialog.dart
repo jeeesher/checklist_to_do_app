@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/app/color/app_color.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmDialog extends StatelessWidget {
@@ -38,7 +39,7 @@ class ConfirmDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundWhite,
       title: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
       content: Text(message),
       actions: [
@@ -52,7 +53,7 @@ class ConfirmDialog extends StatelessWidget {
           ),
           child: const Text(
             'Cancel',
-            style: TextStyle(color: Color(0xFF4A3780)),
+            style: TextStyle(color: primaryColor),
           ),
         ),
 
@@ -62,12 +63,12 @@ class ConfirmDialog extends StatelessWidget {
             Navigator.pop(context);
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF4A3780),
+            backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          child: Text(confirmText, style: const TextStyle(color: Colors.white)),
+          child: Text(confirmText, style: const TextStyle(color: textWhite)),
         ),
       ],
     );

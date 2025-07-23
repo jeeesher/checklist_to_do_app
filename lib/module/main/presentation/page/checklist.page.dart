@@ -4,7 +4,7 @@ import 'package:checklist_to_do_app/module/main/presentation/page/widgets/task_i
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_state.dart';
 import 'package:checklist_to_do_app/module/task/presentation/page/add_task.page.dart';
-import 'package:checklist_to_do_app/module/widgets/add_task_button.dart';
+import 'package:checklist_to_do_app/module/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,7 +41,8 @@ class ChecklistPage extends StatelessWidget {
               onPressed: () => ConfirmDialog.show(
                 context: context,
                 title: 'Clear All Tasks',
-                message: 'Are you sure you want to delete all tasks? This action cannot be undone.',
+                message:
+                    'Are you sure you want to delete all tasks? This action cannot be undone.',
                 confirmText: 'Clear All',
                 onConfirm: () => context.read<TaskCubit>().clearAllTasks(),
               ),
@@ -99,7 +100,7 @@ class ChecklistPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: AddTaskButton(
+            child: CustomButton(
               onPressed: () {
                 Navigator.push(
                   context,

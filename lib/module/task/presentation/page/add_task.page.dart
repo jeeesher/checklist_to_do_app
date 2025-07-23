@@ -1,5 +1,5 @@
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
-import 'package:checklist_to_do_app/module/widgets/add_task_button.dart';
+import 'package:checklist_to_do_app/module/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -117,7 +117,7 @@ class AddTaskPage extends StatelessWidget {
               ),
             ),
 
-            AddTaskButton(
+            CustomButton(
               onPressed: saveTask,
               label: 'Save Task',
               icon: Icons.download_rounded,

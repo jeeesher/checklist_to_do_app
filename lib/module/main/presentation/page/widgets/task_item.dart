@@ -14,8 +14,8 @@ class TaskItem extends StatelessWidget {
     final isCompleted = task.isCompleted;
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
       decoration: BoxDecoration(
         color: isCompleted ? Colors.grey.shade300 : Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -29,6 +29,17 @@ class TaskItem extends StatelessWidget {
       ),
       child: Row(
         children: [
+          Checkbox(
+            value: isCompleted,
+            onChanged: (value) {
+              context.read<TaskCubit>().toggleTask(task.id);
+            },
+            visualDensity: VisualDensity.compact,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+
+          const SizedBox(width: 5),
+
           Expanded(
             child: Text(
               task.title,
@@ -42,19 +53,7 @@ class TaskItem extends StatelessWidget {
             ),
           ),
 
-          Tooltip(
-            message: isCompleted ? 'Mark as Incomplete' : 'Mark as Done',
-            child: GestureDetector(
-              onTap: () => context.read<TaskCubit>().toggleTask(task.id),
-              child: Icon(
-                isCompleted ? Icons.replay_rounded : Icons.check_rounded,
-                color: const Color(0xFF4A3780),
-                size: 24,
-              ),
-            ),
-          ),
-
-          const SizedBox(width: 8),
+          const SizedBox(width: 5),
 
           Tooltip(
             message: 'Delete Task',

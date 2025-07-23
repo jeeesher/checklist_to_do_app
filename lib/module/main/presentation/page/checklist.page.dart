@@ -16,6 +16,7 @@ class ChecklistPage extends StatelessWidget {
       backgroundColor: const Color(0xFFEFF2F5),
       appBar: AppBar(
         backgroundColor: Color(0xFF4A3780),
+        centerTitle: true,
         title: const Text('My To-Do List',
             style: TextStyle(
               fontSize: 24,
@@ -24,13 +25,13 @@ class ChecklistPage extends StatelessWidget {
             )),
         actions: [
           Container(
-            margin: const EdgeInsets.all(5),
+            margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.white,
             ),
             child: IconButton(
-              icon: const Icon(Icons.delete_outline_rounded, color: Color(0xFF4A3780)),
+              icon: const Icon(Icons.delete_outline_rounded, color: Color(0xFF4A3780), size: 20),
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('All tasks cleared!')),
@@ -55,7 +56,7 @@ class ChecklistPage extends StatelessWidget {
                         color: Colors.white,
                         elevation: 0.5,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                         margin: const EdgeInsets.only(bottom: 8),
                         child: ListTile(

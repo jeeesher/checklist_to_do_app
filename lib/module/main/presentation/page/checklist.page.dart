@@ -85,6 +85,9 @@ class ChecklistPage extends StatelessWidget {
                         Text(state.message),
                         SizedBox(height: 16),
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white, backgroundColor: Color(0xFF4A3780),
+                          ),
                           onPressed: () =>
                               context.read<TaskCubit>().loadTasks(),
                           child: Text('Retry'),

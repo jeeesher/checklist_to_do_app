@@ -39,8 +39,11 @@ This project follows a **modular folder structure** for scalability and maintain
 ## How to Use the App
 
 **View Tasks:** Launch the app to see your checklist
+
 **Add Task:** Tap the "Add New Task" button to add a new task
+
 **Complete Tasks:** Tap the checkbox next to any task to mark it complete
+
 **Clear All:** Use the clear all button in the app bar to remove all tasks
 
 ---

@@ -45,7 +45,7 @@ class ChecklistPage extends StatelessWidget {
                 color: Color(0xFF4A3780),
                 size: 20,
               ),
-              onPressed: () => ClearAllDialog.show(context),
+              onPressed: () => ConfirmDialog.show(context),
               tooltip: 'Clear All Tasks',
             ),
           ),
@@ -100,7 +100,8 @@ class ChecklistPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: AddTaskButton( onPressed: () {
+            child: AddTaskButton(
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => AddTaskPage()),

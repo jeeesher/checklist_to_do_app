@@ -2,15 +2,15 @@ import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ClearAllDialog extends StatelessWidget {
+class ConfirmDialog extends StatelessWidget {
   static Future<void> show(BuildContext context) {
     return showDialog<void>(
       context: context,
-      builder: (dialogContext) => ClearAllDialog._(),
+      builder: (dialogContext) => ConfirmDialog._(),
     );
   }
 
-  const ClearAllDialog._();
+  const ConfirmDialog._();
 
   @override
   Widget build(BuildContext context) {

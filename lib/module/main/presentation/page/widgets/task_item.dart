@@ -1,11 +1,11 @@
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/confirm_dialog.dart';
-import 'package:checklist_to_do_app/module/task/data/model/task.model.dart';
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
+import 'package:checklist_to_do_app/module/task/presentation/view_model/task.view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TaskItem extends StatelessWidget {
-  final TaskModel task;
+  final TaskViewModel task;
 
   const TaskItem({super.key, required this.task});
 

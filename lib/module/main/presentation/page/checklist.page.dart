@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/module/widgets/add_task_button.dart';
 import 'package:flutter/material.dart';
 
 class ChecklistPage extends StatelessWidget {
@@ -40,43 +41,54 @@ class ChecklistPage extends StatelessWidget {
           ),
         ],
       ),
-      body: dummyTasks.isEmpty
-          ? _buildEmptyState()
-          : ListView.builder(
-              padding: const EdgeInsets.all(20),
-              itemCount: dummyTasks.length,
-              itemBuilder: (context, index) {
-                final task = dummyTasks[index];
-                return Card(
-                  color: Colors.white,
-                  elevation: 0.5,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+      body: Column(
+        children: [
+          Expanded(
+            child: dummyTasks.isEmpty
+                ? _buildEmptyState()
+                : ListView.builder(
+                    padding: const EdgeInsets.all(20),
+                    itemCount: dummyTasks.length,
+                    itemBuilder: (context, index) {
+                      final task = dummyTasks[index];
+                      return Card(
+                        color: Colors.white,
+                        elevation: 0.5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        margin: const EdgeInsets.only(bottom: 8),
+                        child: ListTile(
+                          leading: Checkbox(
+                            value: task['isCompleted'],
+                            onChanged: (value) {
+                              // No functionality yet
+                            },
+                            activeColor: Color(0xFF4A3780),
+                            checkColor: Colors.white,
+                          ),
+                          title: Text(
+                            task['title'],
+                            style: TextStyle(
+                              decoration: task['isCompleted']
+                                  ? TextDecoration.lineThrough
+                                  : null,
+                              color: task['isCompleted']
+                                  ? Colors.grey
+                                  : Colors.black,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                  margin: const EdgeInsets.only(bottom: 8),
-                  child: ListTile(
-                    leading: Checkbox(
-                      value: task['isCompleted'],
-                      onChanged: (value) {
-                        // No functionality yet
-                      },
-                      activeColor: Color(0xFF4A3780),
-                      checkColor: Colors.white,
-                    ),
-                    title: Text(
-                      task['title'],
-                      style: TextStyle(
-                        decoration: task['isCompleted']
-                            ? TextDecoration.lineThrough
-                            : null,
-                        color:
-                            task['isCompleted'] ? Colors.grey : Colors.black,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: AddTaskButton(onPressed: () {}, label: 'Add New Task'),
+          ),
+        ],
+      ),
     );
   }
 

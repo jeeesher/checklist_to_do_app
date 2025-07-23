@@ -1,3 +1,4 @@
+import 'package:checklist_to_do_app/module/widgets/add_task_button.dart';
 import 'package:flutter/material.dart';
 
 class AddTaskPage extends StatelessWidget {
@@ -41,40 +42,48 @@ class AddTaskPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Task Title',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter task here...',
-                hintStyle: TextStyle(color: Color(0xFFC6BBBB)),
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: const BorderSide(color: Color(0xFFE0E0E0)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: const BorderSide(color: Color(0xFF4A3780)),
+            Expanded(child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'What is your task?',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 16),
+                    TextField(
+                      style: const TextStyle(fontSize: 16),
+                      decoration: InputDecoration(
+                        hintText: 'Enter your task here...',
+                        hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(color: Colors.grey),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF4A3780),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      maxLines: 3,
+                    ),
+                  ],
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Logic to add the task
+
+            AddTaskButton(
+              label: 'Save Task',
+              () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Task saved successfully!')),
+                );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4A3780),
-                padding: const EdgeInsets.symmetric(vertical: 20),
-              ),
-              child: const Text(
-                'Add Task',
-                style: TextStyle(color: Colors.white),
-              ),
             ),
           ],
         ),

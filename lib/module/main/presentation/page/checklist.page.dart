@@ -61,7 +61,7 @@ class ChecklistPage extends StatelessWidget {
 
                 if (state is TaskLoaded) {
                   if (state.tasks.isEmpty) {
-                    return const EmptyTaskState();
+                    return const EmptyTask();
                   }
 
                   return ListView.builder(

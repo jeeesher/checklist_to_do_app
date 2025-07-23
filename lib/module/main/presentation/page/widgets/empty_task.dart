@@ -17,7 +17,7 @@ class EmptyTaskState extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Text(
-            'Tap the + button to add your first task',
+            'Add new task by clicking the button below.',
             style: TextStyle(color: Colors.grey),
           ),
         ],

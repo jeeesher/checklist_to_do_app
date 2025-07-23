@@ -23,7 +23,6 @@ class ChecklistPage extends StatelessWidget {
       backgroundColor: const Color(0xFFEFF2F5),
       appBar: AppBar(
         backgroundColor: Color(0xFF4A3780),
-        centerTitle: true,
         title: const Text(
           'My To-Do List',
           style: TextStyle(

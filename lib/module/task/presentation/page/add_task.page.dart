@@ -29,7 +29,6 @@ class AddTaskPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFF4A3780),
-        centerTitle: true,
         title: const Text(
           'Add New Task',
           style: TextStyle(

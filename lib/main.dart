@@ -3,6 +3,7 @@ import 'package:checklist_to_do_app/module/task/data/repositories/task.repositor
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,6 +18,11 @@ class MainApp extends StatelessWidget {
       create: (context) => TaskCubit(TaskRepository())..loadTasks(),
       child: MaterialApp(
         title: 'Checklist To-Do App',
+        theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
         home: ChecklistPage(),
         debugShowCheckedModeBanner: false,
       ),

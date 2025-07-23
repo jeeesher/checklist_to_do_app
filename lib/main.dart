@@ -13,6 +13,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: ChecklistPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

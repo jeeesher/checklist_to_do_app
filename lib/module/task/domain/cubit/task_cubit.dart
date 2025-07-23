@@ -54,4 +54,10 @@ class TaskCubit extends Cubit<TaskState> {
     await repository.clearAllTasks();
     emit(TaskLoaded(_tasks));
   }
+
+  Future<void> deleteTask(String taskId) async {
+    _tasks.removeWhere((task) => task.id == taskId);
+    await repository.saveTasks(_tasks);
+    emit(TaskLoaded(_tasks));
+  }
 }

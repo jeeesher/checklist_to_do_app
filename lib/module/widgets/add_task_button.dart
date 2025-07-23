@@ -4,7 +4,7 @@ class AddTaskButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
 
-  const AddTaskButton({Key? key, required this.onPressed, required this.label}) : super(key: key);
+  const AddTaskButton({super.key, required this.onPressed, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,13 @@ class AddTaskButton extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(vertical: 20),
         ),
-        child: Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

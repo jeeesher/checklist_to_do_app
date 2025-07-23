@@ -3,6 +3,7 @@ import 'package:checklist_to_do_app/module/main/presentation/page/widgets/empty_
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/task_item.dart';
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_state.dart';
+import 'package:checklist_to_do_app/module/task/presentation/page/add_task.page.dart';
 import 'package:checklist_to_do_app/module/widgets/add_task_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,12 +24,14 @@ class ChecklistPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF4A3780),
         centerTitle: true,
-        title: const Text('My To-Do List',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white
-            )),
+        title: const Text(
+          'My To-Do List',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         actions: [
           Container(
             margin: const EdgeInsets.all(10),
@@ -37,7 +40,11 @@ class ChecklistPage extends StatelessWidget {
               color: Colors.white,
             ),
             child: IconButton(
-              icon: const Icon(Icons.delete_outline_rounded, color: Color(0xFF4A3780), size: 20),
+              icon: const Icon(
+                Icons.delete_outline_rounded,
+                color: Color(0xFF4A3780),
+                size: 20,
+              ),
               onPressed: () => ClearAllDialog.show(context),
               tooltip: 'Clear All Tasks',
             ),
@@ -51,7 +58,7 @@ class ChecklistPage extends StatelessWidget {
               builder: (context, state) {
                 if (state is TaskLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } 
+                }
 
                 if (state is TaskLoaded) {
                   if (state.tasks.isEmpty) {
@@ -70,29 +77,37 @@ class ChecklistPage extends StatelessWidget {
 
                 if (state is TaskError) {
                   return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.error, size: 64, color: Colors.red),
-                          SizedBox(height: 16),
-                          Text(state.message),
-                          SizedBox(height: 16),
-                          ElevatedButton(
-                            onPressed: () => context.read<TaskCubit>().loadTasks(),
-                            child: Text('Retry'),
-                          ),
-                        ],
-                      ),
-                    );
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.error, size: 64, color: Colors.red),
+                        SizedBox(height: 16),
+                        Text(state.message),
+                        SizedBox(height: 16),
+                        ElevatedButton(
+                          onPressed: () =>
+                              context.read<TaskCubit>().loadTasks(),
+                          child: Text('Retry'),
+                        ),
+                      ],
+                    ),
+                  );
                 }
 
                 return Center(child: Text('Something went wrong'));
               },
-            ), 
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: AddTaskButton(() {}, label: 'Add New Task'),
+            child: AddTaskButton( onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddTaskPage()),
+                );
+              },
+              label: 'Add New Task',
+            ),
           ),
         ],
       ),

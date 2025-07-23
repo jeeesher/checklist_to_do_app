@@ -1,4 +1,4 @@
-import 'package:checklist_to_do_app/module/main/presentation/page/widgets/clear_all_dialog.dart';
+import 'package:checklist_to_do_app/module/main/presentation/page/widgets/confirm_dialog.dart';
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/empty_task.dart';
 import 'package:checklist_to_do_app/module/main/presentation/page/widgets/task_item.dart';
 import 'package:checklist_to_do_app/module/task/domain/cubit/task_cubit.dart';
